@@ -10,7 +10,7 @@ function App() {
     <>
       <div>
         <div>
-          <h1>Working is going on</h1>
+          <h1>Something coooking</h1>
         </div>
         </div>
     </>
