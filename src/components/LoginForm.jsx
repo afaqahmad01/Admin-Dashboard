@@ -81,13 +81,14 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleLogin} disabled={!username || !password}>
           <Link to="/dashboard">
+          <Button onClick={handleLogin} disabled={!username || !password}>
           
             Login
-            </Link>
+            
           </Button>
-          {/* <LinkButton>
+          </Link>
+            {/* <LinkButton>
           <Link to="/forget-password">
             Forgot Password?
             </Link>
