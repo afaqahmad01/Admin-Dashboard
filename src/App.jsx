@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.js (or your main entry point)
 
-function App() {
-  const [count, setCount] = useState(0)
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import ForgetPassword from './components/ForgetPassword';
+import Profile from './components/Profile';
+import Dashboard from './components/Dashboard';
 
+const App = () => {
   return (
-    <>
-      <div>
-        <div>
-          <h1>Something coooking</h1>
-        </div>
-        </div>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" exact element={<LoginForm />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
