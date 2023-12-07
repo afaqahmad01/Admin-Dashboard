@@ -1,54 +1,6 @@
-// LoginForm.js
-
 import React, { useState } from 'react';
-import ForgetPassword from "./ForgetPassword"
+import ForgetPassword from './ForgetPassword';
 import { Link } from 'react-router-dom';
-
-
-const Container = ({ children }) => (
-  <div className="flex justify-center flex-col gap-y-5 items-center h-screen">{children}</div>
-);
-
-const FormContainer = ({ children }) => (
-  <div className="w-96 p-6 bg-white rounded shadow-md">{children}</div>
-);
-
-const Title = ({ children }) => <h2 className="text-center mb-6">{children}</h2>;
-
-const Input = ({ type, placeholder, value, onChange }) => (
-  <input
-    type={type}
-    placeholder={placeholder}
-    value={value}
-    onChange={onChange}
-    className="w-full p-3 mb-4 border rounded"
-  />
-);
-
-const Button = ({ onClick, disabled, children }) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`w-full p-3 bg-green-500 text-white border-none rounded cursor-pointer ${
-      disabled ? 'opacity-50 cursor-not-allowed' : ''
-    }`}
-  >
-    {children}
-  </button>
-);
-
-const LinkButton = ({ onClick, children }) => (
-  <button
-    onClick={onClick}
-    className="block mt-4 ml-[180px] w-44 text-blue-500 cursor-pointer hover:underline"
-  >
-    {children}
-  </button>
-);
-
-const handleForget=()=>{
-  <Link to="/forget-password" />
-}
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -64,24 +16,43 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='bg-[#40A858]'>
-      <Container>
+    <div className="flex justify-center flex-col gap-y-5 items-center h-screen bg-[#40A858]">
         <img src="https://i.imgur.com/ol5lsnc_d.jpg?maxwidth=520&shape=thumb&fidelity=high" alt="logo" />
-        <FormContainer>
-          <Title>Login</Title>
-          <Input
+        <div className="w-96 p-6 bg-white rounded shadow-md">
+          <h2 className="text-center mb-6">Login</h2>
+          <input
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 mb-4 border rounded"
           />
-          <Input
+          <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-3 mb-4 border rounded"
           />
           <Link to="/dashboard">
+
+            <button
+              onClick={handleLogin}
+              disabled={!username || !password}
+              className={`w-full p-3 bg-green-500 text-white border-none rounded cursor-pointer ${
+                !username || !password ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              Login
+            </button>
+          </Link>
+
+          {/* <button
+            className="block mt-4 ml-[180px] w-44 text-blue-500 cursor-pointer hover:underline"
+            onClick={() => {
+              window.location.href = '/forget-password';
+            }}
+          >
           <Button onClick={handleLogin} disabled={!username || !password}>
           
             Login
@@ -91,10 +62,8 @@ const LoginForm = () => {
             {/* <LinkButton>
           <Link to="/forget-password">
             Forgot Password?
-            </Link>
-            </LinkButton> */}
-        </FormContainer>
-      </Container>
+          </button> */}
+        </div>
     </div>
   );
 };

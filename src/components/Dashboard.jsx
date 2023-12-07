@@ -1,9 +1,7 @@
-// src/components/Dashboard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
-  // Dummy data for Users and Admin Posts
   const users = [
     { username: 'user1', email: 'user1@example.com', posts: 3, status: 'Active' },
     { username: 'user2', email: 'user2@example.com', posts: 5, status: 'Blocked' },
@@ -19,9 +17,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Main Content */}
       <main className="flex-1 p-8">
-        {/* Navbar */}
         <nav className="bg-green-500 p-4 mb-8">
           <div className="flex justify-between items-center">
             <div className="text-white font-bold text-xl">FlowFlicker</div>
@@ -37,12 +33,9 @@ const Dashboard = () => {
           </div>
         </nav>
 
-        {/* Dashboard Blocks */}
         <div className="grid grid-rows-2 gap-8">
-          {/* Users Block */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold mb-4">Users</h2>
-            {/* Dummy Users Table */}
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-300">
                 <thead>
@@ -71,10 +64,8 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Admin Posts Block */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold mb-4">Admin Posts</h2>
-            {/* Dummy Admin Posts Table */}
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-300">
                 <thead>
