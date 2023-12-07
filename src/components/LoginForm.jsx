@@ -35,6 +35,7 @@ const LoginForm = () => {
             className="w-full p-3 mb-4 border rounded"
           />
           <Link to="/dashboard">
+
             <button
               onClick={handleLogin}
               disabled={!username || !password}
@@ -52,6 +53,14 @@ const LoginForm = () => {
               window.location.href = '/forget-password';
             }}
           >
+          <Button onClick={handleLogin} disabled={!username || !password}>
+          
+            Login
+            
+          </Button>
+          </Link>
+            {/* <LinkButton>
+          <Link to="/forget-password">
             Forgot Password?
           </button> */}
         </div>
