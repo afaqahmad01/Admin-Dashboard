@@ -238,9 +238,6 @@ const UserDetails = () => {
     setSelectedUser(updatedSelectedUser);
     setSelectedPost(null);
     setOpen(false);
-
-    // Optionally, you can perform any additional cleanup or display a message
-    console.log(`Post "${removedPost.title}" removed successfully.`);
   };
 
   return (
