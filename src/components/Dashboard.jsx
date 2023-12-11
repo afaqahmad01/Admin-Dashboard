@@ -1,18 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// src/components/Dashboard.js
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const users = [
-    { username: 'user1', email: 'user1@example.com', posts: 3, status: 'Active' },
-    { username: 'user2', email: 'user2@example.com', posts: 5, status: 'Blocked' },
-    { username: 'user3', email: 'user3@example.com', posts: 2, status: 'Active' },
+    {
+      id: 1,
+      username: "user1",
+      email: "user1@example.com",
+      posts: 3,
+      status: "Active",
+    },
+    {
+      id: 2,
+      username: "user2",
+      email: "user2@example.com",
+      posts: 5,
+      status: "Blocked",
+    },
+    {
+      id: 3,
+      username: "user3",
+      email: "user3@example.com",
+      posts: 2,
+      status: "Active",
+    },
   ];
-
   const adminPosts = [
-    { postType: 'Image', postTag: 'Relaxing', uploadedSince: '2 days ago', likes: 15, comments: 3 },
-    { postType: 'Video', postTag: 'Motivational', uploadedSince: '1 week ago', likes: 20, comments: 5 },
-    { postType: 'Video', postTag: 'Happy', uploadedSince: '1 month and 2 days ago', likes: 172, comments: 52 },
-
+    {
+      id: 1,
+      postType: "Image",
+      postTag: "Relaxing",
+      uploadedSince: "2 days ago",
+      likes: 15,
+      comments: 3,
+    },
+    {
+      id: 2,
+      postType: "Video",
+      postTag: "Motivational",
+      uploadedSince: "1 week ago",
+      likes: 20,
+      comments: 5,
+    },
+    {
+      id: 3,
+      postType: "Video",
+      postTag: "Happy",
+      uploadedSince: "1 month and 2 days ago",
+      likes: 172,
+      comments: 52,
+    },
   ];
 
   return (
@@ -50,11 +88,30 @@ const Dashboard = () => {
                 <tbody>
                   {users.map((user, index) => (
                     <tr key={user.id}>
-                      <td className="border border-gray-300 p-2">{index + 1}</td>
-                      <td className="border border-gray-300 p-2">{user.username}</td>
-                      <td className="border border-gray-300 p-2">{user.email}</td>
-                      <td className="border border-gray-300 p-2">{user.posts}</td>
-                      <td className={`border border-gray-300 p-2 ${user.status === 'Blocked' ? 'text-red-500' : 'text-green-500'}`}>
+                      <td className="border border-gray-300 p-2">
+                        {index + 1}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        <Link
+                          to={`/user/${user.id}`}
+                          className="text-blue-500 hover:underline"
+                        >
+                          {user.username}
+                        </Link>
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {user.email}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {user.posts}
+                      </td>
+                      <td
+                        className={`border border-gray-300 p-2 ${
+                          user.status === "Blocked"
+                            ? "text-red-500"
+                            : "text-green-500"
+                        }`}
+                      >
                         {user.status}
                       </td>
                     </tr>
@@ -73,7 +130,9 @@ const Dashboard = () => {
                     <th className="border border-gray-300 p-2">#</th>
                     <th className="border border-gray-300 p-2">Post Type</th>
                     <th className="border border-gray-300 p-2">Post Tag</th>
-                    <th className="border border-gray-300 p-2">Uploaded Since</th>
+                    <th className="border border-gray-300 p-2">
+                      Uploaded Since
+                    </th>
                     <th className="border border-gray-300 p-2">Likes</th>
                     <th className="border border-gray-300 p-2">Comments</th>
                   </tr>
@@ -81,12 +140,24 @@ const Dashboard = () => {
                 <tbody>
                   {adminPosts.map((post, index) => (
                     <tr key={post.id}>
-                      <td className="border border-gray-300 p-2">{index + 1}</td>
-                      <td className="border border-gray-300 p-2">{post.postType}</td>
-                      <td className="border border-gray-300 p-2">{post.postTag}</td>
-                      <td className="border border-gray-300 p-2">{post.uploadedSince}</td>
-                      <td className="border border-gray-300 p-2">{post.likes}</td>
-                      <td className="border border-gray-300 p-2">{post.comments}</td>
+                      <td className="border border-gray-300 p-2">
+                        {index + 1}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {post.postType}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {post.postTag}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {post.uploadedSince}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {post.likes}
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        {post.comments}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
