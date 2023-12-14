@@ -238,9 +238,6 @@ const UserDetails = () => {
     setSelectedUser(updatedSelectedUser);
     setSelectedPost(null);
     setOpen(false);
-
-    // Optionally, you can perform any additional cleanup or display a message
-    console.log(`Post "${removedPost.title}" removed successfully.`);
   };
 
   return (
@@ -322,18 +319,43 @@ const UserDetails = () => {
           {/* User Posts */}
           <div className="bg-white p-6 rounded-lg shadow-md overflow-y-auto max-h-96">
             <h2 className="text-xl font-bold mb-4">User Posts</h2>
-            {selectedUser.posts.map((post) => (
-              <div
-                key={post.id}
-                className="mb-4 p-4 border border-gray-300 rounded cursor-pointer"
-                onClick={() => handleClickOpen(post)}
-              >
-                <h3 className="text-lg font-bold mb-2">{post.title}</h3>
-                <p>{post.content}</p>
-              </div>
-            ))}
+            <table className="min-w-full bg-white border border-gray-300">
+              <thead>
+                <tr>
+                  <th className="border border-gray-300 p-2">#</th>
+                  <th className="border border-gray-300 p-2">Post Type</th>
+                  <th className="border border-gray-300 p-2">Post Tag</th>
+                  <th className="border border-gray-300 p-2">Uploaded Since</th>
+                  <th className="border border-gray-300 p-2">Likes</th>
+                  <th className="border border-gray-300 p-2">Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedUser.posts.map((post, index) => (
+                  <tr
+                    key={post.id}
+                    onClick={() => handleClickOpen(post)}
+                    className="cursor-pointer hover:bg-gray-100"
+                  >
+                    <td className="border border-gray-300 p-2">{index + 1}</td>
+                    <td className="border border-gray-300 p-2">
+                      {post.postType}
+                    </td>
+                    <td className="border border-gray-300 p-2">
+                      {post.postTag}
+                    </td>
+                    <td className="border border-gray-300 p-2">
+                      {post.uploadedSince}
+                    </td>
+                    <td className="border border-gray-300 p-2">{post.likes}</td>
+                    <td className="border border-gray-300 p-2">
+                      {post.comments.join(",")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
           {/* Post Pop-up Dialog */}
           <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
             <DialogTitle id="responsive-dialog-title">Post Details</DialogTitle>
