@@ -1,4 +1,3 @@
-// src/components/Dashboard.js
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { IoIosAlarm } from "react-icons/io";
@@ -121,12 +120,11 @@ const Dashboard = () => {
   const handleClickOpen = (post) => {
     setSelectedPost(post);
     setOpen(true);
-    setCurrentPhotoIndex(0); // Reset the index when opening a new post
-    setCurrentVideoIndex(0); // Reset the index when opening a new post
+    setCurrentPhotoIndex(0);
+    setCurrentVideoIndex(0);
   };
 
   const handleRemovePost = (postId) => {
-    // Remove post from adminPosts array
     setUpdatedAdminPosts(
       updatedAdminPosts.filter((post) => post.id !== postId)
     );
